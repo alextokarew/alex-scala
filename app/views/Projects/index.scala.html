@@ -1,0 +1,12 @@
+@(projects: List[Project])
+
+@main {
+    @projects.map { project =>
+        <article>
+            <header>
+                <h1><a href="#TODO">@project.name</a></h1>
+            </header>
+            <p>@project.summary</p>
+        </article>
+    }
+}

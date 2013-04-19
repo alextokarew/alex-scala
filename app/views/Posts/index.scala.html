@@ -1,0 +1,13 @@
+@(posts: List[Post])
+
+@main {
+    @posts.map { post =>
+    <article>
+        <header>
+            <h1>@post.title</h1>
+            <time>@post.created_at</time>
+        </header>
+        <p>@post.content</p>
+    </article>
+    }
+}
