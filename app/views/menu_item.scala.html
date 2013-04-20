@@ -1,0 +1,8 @@
+@(title: String, path: Call, currentUrl : String)
+@clazz = @{
+    if (path.url == currentUrl)
+    "active"
+    else
+    ""
+}
+<li class="@clazz"><a href="@path">@title</a></li>

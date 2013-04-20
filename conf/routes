@@ -7,7 +7,8 @@ GET     /                           controllers.Posts.index
 
 #projects
 GET     /projects                   controllers.Projects.index
-
+GET     /projects/:name             controllers.Projects.show(name: String)
+GET     /projects/:name/history     controllers.Projects.history(name: String)
 
 GET     /contacts                   controllers.Application.contacts
 

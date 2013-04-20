@@ -1,0 +1,18 @@
+@(project: Project, kind: String, currentUrl : String)
+
+@main {
+<article>
+    <header>
+    <h1>@project.title</h1>
+    <ul class="nav nav-pills">
+        @menu_item("Описание", routes.Projects.show(project.name), currentUrl)
+        @menu_item("История", routes.Projects.history(project.name), currentUrl)
+    </ul>
+    </header>
+    @if(kind == "history") {
+    <p>@project.history</p>
+    } else {
+    <p>@project.description</p>
+    }
+</article>
+}
