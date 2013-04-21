@@ -1,12 +1,12 @@
-@(project: Project, kind: String, currentUrl : String)
+@(project: Project, kind: String)(implicit request: Request[Any])
 
 @main {
 <article>
     <header>
     <h1>@project.title</h1>
     <ul class="nav nav-pills">
-        @menu_item("Описание", routes.Projects.show(project.name), currentUrl)
-        @menu_item("История", routes.Projects.history(project.name), currentUrl)
+        @menu_item("Описание", routes.Projects.show(project.name))
+        @menu_item("История", routes.Projects.history(project.name))
     </ul>
     </header>
     @if(kind == "history") {

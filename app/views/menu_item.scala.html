@@ -1,8 +1,8 @@
-@(title: String, path: Call, currentUrl : String)
+@(title: String, path: Call, tailPattern: String = "$")(implicit request: Request[Any])
 @clazz = @{
-    if (path.url == currentUrl)
-    "active"
-    else
-    ""
+    (path.url + tailPattern).r findFirstIn request.uri match {
+        case Some(c) => "active"
+        case None => ""
+    }
 }
 <li class="@clazz"><a href="@path">@title</a></li>

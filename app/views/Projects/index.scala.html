@@ -1,4 +1,4 @@
-@(projects: List[Project])
+@(projects: List[Project])(implicit request: Request[Any])
 
 @main {
     @projects.map { project =>

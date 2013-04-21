@@ -6,14 +6,13 @@ import models.Project
 
 object Projects extends Controller {
   
-  def index = Action {
+  def index = Action {implicit request =>
     Ok(views.html.Projects.index(Project.all()))
   }
 
-  def show(name: String, kind : String = "description") = Action {request =>
-    val currentUrl = request.uri
+  def show(name: String, kind : String = "description") = Action {implicit request =>
     Project.find(name) match {
-      case Some(project) => Ok(views.html.Projects.show(project, kind, currentUrl))
+      case Some(project) => Ok(views.html.Projects.show(project, kind))
       case None => NotFound
     }
   }

@@ -1,4 +1,4 @@
-@(content: Html)
+@(content: Html)(implicit request: Request[Any])
 
 <!DOCTYPE html>
 
@@ -25,9 +25,9 @@
             <a href="/" class="brand"><img src="@routes.Assets.at("images/logo_white24.png")" /></a>
             <div class="nav-collapse collapse">
               <ul class="nav">
-                <li class="active"><a href="/">Блог</a></li>
-                <li><a href="/projects">Проекты</a></li>
-                <li><a href="/contacts">Контакты</a></li>
+                @menu_item("Блог", routes.Posts.index())
+                @menu_item("Проекты", routes.Projects.index(), ".*")
+                @menu_item("Контакты", routes.Application.contacts(), ".*")
               </ul>
             </div>
           </div>

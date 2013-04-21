@@ -1,4 +1,4 @@
-@(posts: List[Post])
+@(posts: List[Post])(implicit request: Request[Any])
 
 @main {
     @posts.map { post =>

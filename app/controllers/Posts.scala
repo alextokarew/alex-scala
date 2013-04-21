@@ -8,7 +8,7 @@ import models.Post
 
 object Posts extends Controller {
   
-  def index = Action {
+  def index = Action {implicit request =>
     Ok(views.html.Posts.index(Post.all()))
   }
   
