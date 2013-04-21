@@ -1,12 +1,14 @@
 @(projects: List[Project])(implicit request: Request[Any])
 
+@import helpers.TextHelper._
+
 @main {
     @projects.map { project =>
         <article>
             <header>
                 <h1><a href="@routes.Projects.show(project.name)">@project.title</a></h1>
             </header>
-            <p>@project.summary</p>
+                @Html(textile(project.summary))
         </article>
     }
 }

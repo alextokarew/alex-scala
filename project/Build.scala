@@ -7,10 +7,14 @@ object ApplicationBuild extends Build {
   val appName         = "alex"
   val appVersion      = "1.0-SNAPSHOT"
 
+  //Textile processor
+  val markwrap = "org.clapper" %% "markwrap" % "1.0.1"
+
   val appDependencies = Seq(
     // Add your project dependencies here,
     jdbc,
-    anorm
+    anorm,
+    markwrap
   )
 
 

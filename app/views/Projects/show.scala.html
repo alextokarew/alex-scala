@@ -1,5 +1,7 @@
 @(project: Project, kind: String)(implicit request: Request[Any])
 
+@import helpers.TextHelper._
+
 @main {
 <article>
     <header>
@@ -9,10 +11,6 @@
         @menu_item("История", routes.Projects.history(project.name))
     </ul>
     </header>
-    @if(kind == "history") {
-    <p>@project.history</p>
-    } else {
-    <p>@project.description</p>
-    }
+    @Html(textile(if(kind == "history") project.history else project.description))
 </article>
 }

@@ -1,5 +1,7 @@
 @(posts: List[Post])(implicit request: Request[Any])
 
+@import helpers.TextHelper._
+
 @main {
     @posts.map { post =>
     <article>
@@ -7,7 +9,7 @@
             <h1>@post.title</h1>
             <time>@post.created_at</time>
         </header>
-        <p>@post.content</p>
+        @Html(textile(post.content))
     </article>
     }
 }

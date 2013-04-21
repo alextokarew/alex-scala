@@ -12,7 +12,7 @@ CREATE TABLE Projects (
     PRIMARY KEY (id)
 );
 
-insert into Projects values (1,'rus-etrain','Rus-Etrain','The rus etrain project summary','The rus etrain project description','The rus etrain project history');
+insert into Projects values (1,'rus-etrain','Rus-Etrain','The rus etrain project summary','The rus etrain project description, "Ris-Etrain":http://rus-etrain.ru/','The rus etrain project history');
 
 # --- !Downs
 
