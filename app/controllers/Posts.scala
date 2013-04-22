@@ -25,6 +25,15 @@ object Posts extends Controller with Secured {
     Ok(views.html.Posts.postForm(postForm))
   }
 
-  def create = TODO
+  def create = IsAuthenticated {_ => implicit request =>
+    postForm.bindFromRequest.fold(
+      formWithErrors => BadRequest(views.html.Posts.postForm(formWithErrors)),
+      post => {
+        post.save()
+        Redirect(routes.Posts.index)
+      }
+    )
+
+  }
   
 }

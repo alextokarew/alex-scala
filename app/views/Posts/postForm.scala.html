@@ -5,9 +5,8 @@
 @main {
     @form(action = routes.Posts.create) {
         @inputText(field = postForm("title"), args = '_label -> "Title")
-        @inputText(field = postForm("content"), args = '_label -> "Content")
+        @textarea(field = postForm("content"), args = '_label -> "Content", 'class -> "largeText")
+        <input type="submit" value="Create"/>
     }
-
-    <input type="submit" value="Create"/>
 
 }
