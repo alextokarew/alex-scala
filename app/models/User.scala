@@ -11,10 +11,7 @@ import org.apache.commons.codec.binary.Hex
 
 object User {
   def authenticate(name: String, password: String) : Boolean = DB.withConnection {implicit c =>
-    println(name)
-    println(password)
     val digest = new String(Hex.encodeHex(MessageDigest.getInstance("MD5").digest(password.getBytes)))
-    println(digest)
 
     SQL("select 1 from users where name={name} and password_digest={password_digest}")
       .on("name" -> name, "password_digest" -> digest)

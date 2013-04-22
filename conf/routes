@@ -4,6 +4,8 @@
 
 # Home page and posts
 GET     /                           controllers.Posts.index
+GET     /posts/new                  controllers.Posts.newPost
+POST    /posts                      controllers.Posts.create
 
 #projects
 GET     /projects                   controllers.Projects.index

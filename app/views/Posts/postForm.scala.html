@@ -1,0 +1,13 @@
+@(postForm: Form[Post])(implicit request: Request[Any])
+
+@import helper._
+
+@main {
+    @form(action = routes.Posts.create) {
+        @inputText(field = postForm("title"), args = '_label -> "Title")
+        @inputText(field = postForm("content"), args = '_label -> "Content")
+    }
+
+    <input type="submit" value="Create"/>
+
+}
