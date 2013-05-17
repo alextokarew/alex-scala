@@ -11,12 +11,13 @@ object Projects extends Controller with Secured {
 
   val projectForm = Form(
     mapping(
+      "id" -> ignored(0L),
       "name" -> nonEmptyText,
       "title" -> nonEmptyText,
       "summary" -> nonEmptyText,
       "description" -> nonEmptyText,
       "history" -> nonEmptyText
-    )(Project.apply(0L, _, _, _, _, _))((p: Project) => Some(p.name, p.title, p.summary, p.description, p.history))
+    )(Project.apply)(Project.unapply)
   )
 
   def index = Action {implicit request =>
@@ -45,5 +46,21 @@ object Projects extends Controller with Secured {
       }
     )
   }
-  
+
+  def edit(name: String) = IsAuthenticated {_ => implicit request =>
+    Project.find(name) match {
+      case Some(project) => Ok(views.html.Projects.projectForm(projectForm.fill(project), project.id))
+      case None => NotFound
+    }
+  }
+
+  def update(id: String) = IsAuthenticated {_ => implicit request =>
+    projectForm.bindFromRequest.fold(
+      formWithErrors => BadRequest(views.html.Projects.projectForm(formWithErrors)),
+      project => {
+        project.save(id.toLong)
+        Redirect(routes.Projects.index)
+      }
+    )
+  }
 }

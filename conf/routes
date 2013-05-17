@@ -11,8 +11,10 @@ POST    /posts                      controllers.Posts.create
 GET     /projects                   controllers.Projects.index
 GET     /projects/new               controllers.Projects.newProject
 GET     /projects/:name             controllers.Projects.show(name: String)
+GET     /projects/:name/edit        controllers.Projects.edit(name: String)
 GET     /projects/:name/history     controllers.Projects.history(name: String)
 POST    /projects                   controllers.Projects.create
+POST    /projects/:name             controllers.Projects.update(name: String)
 
 GET     /contacts                   controllers.Application.contacts
 
