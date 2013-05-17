@@ -5,7 +5,16 @@ import anorm._
 import anorm.SqlParser._
 import play.api.Play.current
 
-case class Project(id: Long, name: String, title: String, summary: String, description : String, history: String)
+case class Project(id: Long, name: String, title: String, summary: String, description : String, history: String) {
+  def save() : Boolean = DB.withConnection {implicit c =>
+    id match {
+      case 0 => SQL("insert into projects (name, title, summary, description, history) values ({name}, {title}, {summary}, {description}, {history})")
+        .on("name" -> name, "title" -> title, "summary" -> summary, "description" -> description, "history" -> history)
+        .execute()
+      case _ => true //TODO
+    }
+  }
+}
 
 object Project {
   val projectBrief = {

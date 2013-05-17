@@ -1,0 +1,15 @@
+@(projectForm: Form[Project])(implicit request: Request[Any])
+
+@import helper._
+
+@main {
+    @form(action = routes.Projects.create) {
+        @inputText(field = projectForm("name"), args = '_label -> "Name")
+        @inputText(field = projectForm("title"), args = '_label -> "Title")
+        @textarea(field = projectForm("summary"), args = '_label -> "Summary", 'class -> "largeText")
+        @textarea(field = projectForm("description"), args = '_label -> "Description", 'class -> "largeText")
+        @textarea(field = projectForm("history"), args = '_label -> "History", 'class -> "largeText")
+        <input type="submit" value="Create"/>
+    }
+
+}

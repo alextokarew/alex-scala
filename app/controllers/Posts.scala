@@ -33,7 +33,6 @@ object Posts extends Controller with Secured {
         Redirect(routes.Posts.index)
       }
     )
-
   }
   
 }
