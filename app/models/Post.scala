@@ -9,12 +9,14 @@ import play.api.Play.current
 import java.util.Date
 
 case class Post(id: Long, title: String, content: String, created_at: Date) {
-  def save() : Boolean = DB.withConnection {implicit c =>
+  def save(id: Long = 0) : Boolean = DB.withConnection {implicit c =>
     id match {
       case 0 => SQL("insert into posts (title, content, created_at) values ({title}, {content}, now())")
         .on("title" -> title, "content" -> content)
         .execute()
-      case _ => true //TODO
+      case _ => SQL("update posts set title={title}, content={content} where id={id}")
+        .on("title" -> title, "content" -> content, "id" -> id)
+        .execute()
     }
   }
 }
@@ -29,5 +31,11 @@ object Post {
 
   def all() : List[Post] = DB.withConnection {implicit c =>
     SQL("select * from posts order by created_at desc").as(post *)
+  }
+
+  def find(id: String) = DB.withConnection { implicit c =>
+    SQL("select * from posts where id = {id}")
+      .on("id" -> id)
+      .as(post singleOpt)
   }
 }

@@ -6,6 +6,8 @@
 GET     /                           controllers.Posts.index
 GET     /posts/new                  controllers.Posts.newPost
 POST    /posts                      controllers.Posts.create
+GET     /posts/:id/edit             controllers.Posts.edit(id: String)
+POST    /posts/:id                  controllers.Posts.update(id: String)
 
 #projects
 GET     /projects                   controllers.Projects.index
@@ -14,7 +16,7 @@ GET     /projects/:name             controllers.Projects.show(name: String)
 GET     /projects/:name/edit        controllers.Projects.edit(name: String)
 GET     /projects/:name/history     controllers.Projects.history(name: String)
 POST    /projects                   controllers.Projects.create
-POST    /projects/:name             controllers.Projects.update(name: String)
+POST    /projects/:id               controllers.Projects.update(id: String)
 
 GET     /contacts                   controllers.Application.contacts
 

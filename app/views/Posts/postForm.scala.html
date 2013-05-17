@@ -1,12 +1,12 @@
-@(postForm: Form[Post])(implicit request: Request[Any])
+@(postForm: Form[Post], id: Long = 0)(implicit request: Request[Any])
 
 @import helper._
 
 @main {
-    @form(action = routes.Posts.create) {
+    @form(action = if (id > 0) routes.Posts.update(id.toString()) else routes.Posts.create) {
         @inputText(field = postForm("title"), args = '_label -> "Title")
         @textarea(field = postForm("content"), args = '_label -> "Content", 'class -> "largeText")
-        <input type="submit" value="Create"/>
+        <input type="submit" value="@{if (id > 0) "Update" else "Create"}"/>
     }
 
 }
