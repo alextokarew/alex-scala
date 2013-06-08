@@ -11,12 +11,8 @@ POST    /posts/:id                  controllers.Posts.update(id: String)
 
 #projects
 GET     /projects                   controllers.Projects.index
-GET     /projects/new               controllers.Projects.newProject
 GET     /projects/:name             controllers.Projects.show(name: String)
-GET     /projects/:name/edit        controllers.Projects.edit(name: String)
 GET     /projects/:name/history     controllers.Projects.history(name: String)
-POST    /projects                   controllers.Projects.create
-POST    /projects/:id               controllers.Projects.update(id: String)
 
 GET     /contacts                   controllers.Application.contacts
 
