@@ -7,7 +7,7 @@
     <article>
         <header>
             <h1>@post.title</h1>
-            <time>@post.created_at</time>
+            <time>@formatDate(post.created_at)</time>
         </header>
         @Html(textile(post.content))
     </article>
