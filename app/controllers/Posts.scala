@@ -38,7 +38,7 @@ object Posts extends Controller with Secured {
   }
 
   def edit(id: String) = IsAuthenticated {_ => implicit request =>
-    Post.find(id) match {
+    Post.find(id.toLong) match {
       case Some(post) => Ok(views.html.Posts.postForm(postForm.fill(post), post.id))
       case None => NotFound
     }

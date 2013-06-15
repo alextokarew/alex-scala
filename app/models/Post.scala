@@ -33,7 +33,7 @@ object Post {
     SQL("select * from posts order by created_at desc").as(post *)
   }
 
-  def find(id: String) = DB.withConnection { implicit c =>
+  def find(id: Long) = DB.withConnection { implicit c =>
     SQL("select * from posts where id = {id}")
       .on("id" -> id)
       .as(post singleOpt)
