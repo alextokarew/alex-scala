@@ -8,7 +8,6 @@ CREATE TABLE Users (
     PRIMARY KEY (name)
 );
 
-insert into Users values ('sanchous-i','5d23a82bed6c309bece1a9ae9a063879');
 
 # --- !Downs
 
